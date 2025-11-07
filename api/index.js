@@ -2,7 +2,7 @@ import express from "express";
 import axios from "axios";
 import OAuth from "oauth-1.0a";
 import crypto from "crypto";
-
+import cors from "cors"; 
 // Load environment variables
 import dotenv from "dotenv";
 import path from "path";
@@ -18,6 +18,7 @@ dotenv.config({ path: path.join(__dirname, "../.env") });
 console.log("✅ Loaded .env from:", path.join(__dirname, "../.env"));
 // --- Express setup ---
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // --- Load NetSuite credentials from env ---
