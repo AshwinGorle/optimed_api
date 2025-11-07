@@ -4,7 +4,7 @@
       { "src": "api/index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/create-prospect", "dest": "/api/create-prospect.js" }
+      { "src": "/(.*)", "dest": "/api/index.js" }
     ]
-  }
+}
   
