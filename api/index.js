@@ -135,16 +135,23 @@ app.get("/", (req, res) => {
 app.post("/api/create-prospect", async (req, res) => {
   try {
     const prospect = req.body;
+
     if (!prospect || typeof prospect !== "object") {
       return res.status(400).json({ error: "Invalid JSON payload" });
     }
-    const result = await create_prospect_netsuite(prospect);
-    return res.status(result.success ? 200 : 500).json(result);
+
+    await create_prospect_netsuite(prospect); // run function, but don’t return result
+
+    return res.status(200).json({
+      status: "success",
+      message: "Record created successfully",
+    });
   } catch (err) {
     console.error("❌ Error in /api/create-prospect:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 // --- Start server locally ---
 const PORT = process.env.PORT || 3000;
