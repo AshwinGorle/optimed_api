@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "api/create-prospect.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/api/create-prospect", "dest": "/api/create-prospect.js" }
+    ]
+  }
+  
